@@ -81,12 +81,15 @@ ul { list-style: none; }
     text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
 }
 
-.subtitle { 
-    color: #bbb; 
-    margin-bottom: 30px; 
-    background: rgba(0,0,0,0.7); /* Fond noir sous le texte */
-    padding: 5px 10px;
-    border-radius: 4px;
+
+.subtitle {
+    color: #bbb;
+    margin-bottom: 30px;
+    /* background: rgba(0,0,0,0.6);  <-- ANCIENNE LIGNE */
+    background: transparent;      /* <-- NOUVELLE LIGNE : FOND TRANSPARENT */
+    padding: 8px 16px;
+    /* border: 1px solid #1a1a1a;    <-- LIGNE SUPPRIMÉE : PLUS DE BORDURE */
+    /* On garde le padding pour l'espacement, mais il est invisible */
 }
 
 .cta-btn {
