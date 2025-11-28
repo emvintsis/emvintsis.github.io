@@ -12,7 +12,8 @@ body {
     line-height: 1.6;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden; /* Évite le scroll horizontal */
+    min-height: 100vh; /* Assure que le body prend tout l'écran */
+    overflow-x: hidden;
 }
 
 /* --- LE FOND DYNAMIQUE --- */
@@ -22,7 +23,20 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Place l'animation DERRIÈRE tout */
+    /* On le met en arrière-plan, mais on ajoute pointer-events: none
+       pour être sûr qu'il ne bloque pas les clics sur le site */
+    z-index: 0; 
+    pointer-events: none;
+}
+
+/* --- COUCHES (LAYERS) - CORRECTION DU BUG D'AFFICHAGE --- */
+/* On force tous les blocs de contenu à être RELATIFS et au-dessus (z-index 10) */
+.navbar, 
+.hero, 
+.section, 
+footer {
+    position: relative; 
+    z-index: 10;
 }
 
 /* --- UTILITAIRES --- */
@@ -38,11 +52,10 @@ ul { list-style: none; }
 
 /* --- NAVIGATION --- */
 .navbar {
-    position: sticky;
+    position: sticky; /* Reste accroché en haut */
     top: 0;
-    z-index: 100;
-    background: rgba(5, 5, 5, 0.9); /* Fond noir transparent */
-    backdrop-filter: blur(5px);
+    background: rgba(5, 5, 5, 0.85); /* Un peu plus transparent */
+    backdrop-filter: blur(10px); /* Flou plus fort pour la lisibilité */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -70,86 +83,98 @@ ul { list-style: none; }
     justify-content: center;
     align-items: center;
     text-align: center;
-    /* Dégradé pour lisibilité */
-    background: radial-gradient(circle, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 70%);
+    /* Petit dégradé pour assombrir le centre et faire ressortir le texte */
+    background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 70%);
 }
 
 .hero h1 {
     font-size: 3rem;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     min-height: 3.6rem;
-    text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+    text-shadow: 0 0 15px rgba(0, 255, 65, 0.4); /* Glow vert */
 }
 
 .subtitle { 
     color: #bbb; 
     margin-bottom: 30px; 
-    background: rgba(0,0,0,0.7); /* Fond noir sous le texte */
-    padding: 5px 10px;
+    background: rgba(0,0,0,0.6);
+    padding: 8px 16px;
     border-radius: 4px;
+    border: 1px solid #1a1a1a;
 }
 
 .cta-btn {
     border: 1px solid #00ff41;
     color: #00ff41;
-    padding: 10px 20px;
+    padding: 12px 25px;
     background: rgba(0, 255, 65, 0.05);
     display: inline-block;
+    font-weight: bold;
 }
 
 .cta-btn:hover {
     background: #00ff41;
     color: #000;
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
 }
 
 /* --- SECTIONS --- */
 .section { 
     padding: 80px 0; 
     border-top: 1px solid #222; 
-    background: rgba(10, 10, 10, 0.7); /* Fond important pour la lisibilité */
-    backdrop-filter: blur(3px);
+    /* Fond semi-transparent pour que le texte soit lisible sur les lignes vertes */
+    background: rgba(10, 10, 10, 0.85); 
+    backdrop-filter: blur(5px);
 }
-.section-title { margin-bottom: 40px; color: #00ff41; border-left: 4px solid #00ff41; padding-left: 15px;}
+.section-title { 
+    margin-bottom: 40px; 
+    color: #00ff41; 
+    border-left: 4px solid #00ff41; 
+    padding-left: 15px;
+    font-size: 1.8rem;
+}
 
 /* --- GRILLE PROJETS --- */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    /* Correction : permet aux cartes de ne pas s'écraser */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
 }
 
 .card {
-    background: rgba(20, 20, 20, 0.95); /* Carte opaque */
+    background: rgba(25, 25, 25, 0.95); /* Quasi opaque */
     border: 1px solid #333;
     padding: 25px;
     border-radius: 6px;
-    transition: transform 0.2s, border-color 0.2s;
+    transition: transform 0.3s ease, border-color 0.3s;
 }
 
 .card:hover {
     transform: translateY(-5px);
     border-color: #00ff41;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
 }
 
-.card h3 { margin-bottom: 10px; }
+.card h3 { margin-bottom: 10px; color: #fff; }
 .card p { font-size: 0.9rem; color: #aaa; margin-bottom: 20px; }
 
 .tags span {
     font-size: 0.75rem;
-    background: #222;
-    padding: 2px 8px;
+    background: #111;
+    border: 1px solid #333;
+    padding: 4px 8px;
     margin-right: 5px;
-    border-radius: 2px;
+    border-radius: 3px;
     color: #888;
 }
 
-.link { display: block; margin-top: 15px; font-size: 0.9rem; color: #00ff41; }
+.link { display: inline-block; margin-top: 15px; font-size: 0.9rem; color: #00ff41; }
+.link:hover { text-decoration: underline; }
 
 /* --- LISTE ARTICLES --- */
 .article-list {
-    background: rgba(20, 20, 20, 0.95); /* Liste opaque */
+    background: rgba(25, 25, 25, 0.95);
     padding: 20px;
     border-radius: 6px;
     border: 1px solid #333;
@@ -164,8 +189,9 @@ ul { list-style: none; }
 }
 
 .article-item:last-child { border-bottom: none; }
-.article-item:hover { padding-left: 10px; }
-.article-item .date { color: #555; font-size: 0.9rem; margin-right: 20px; }
+.article-item:hover { padding-left: 10px; border-bottom-color: #00ff41; }
+.article-item a { font-weight: 500; }
+.article-item .date { color: #666; font-size: 0.85rem; margin-right: 20px; min-width: 100px; }
 
 /* --- FOOTER --- */
 footer { 
@@ -174,4 +200,5 @@ footer {
     color: #444; 
     background: #050505;
     font-size: 0.8rem; 
+    border-top: 1px solid #222;
 }
