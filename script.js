@@ -48,9 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // ==========================================
-    // 3. FOND DYNAMIQUE "MATRIX/NETWORK" (AJOUT)
-    // ==========================================
+
     const canvas = document.getElementById('canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
