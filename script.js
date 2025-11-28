@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- Effet Machine à Écrire ---
-    const textToType = "Bienvenue sur M26_";
+    const textToType = "Welcome to M26_";
     const typingElement = document.getElementById('typing-text');
     let index = 0;
 
@@ -47,4 +47,5 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transition = 'all 0.6s ease-out';
         observer.observe(el);
     });
+
 });
