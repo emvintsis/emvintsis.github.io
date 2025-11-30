@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 1. EFFET MACHINE À ÉCRIRE (TON CODE)
     // ==========================================
-    const textToType = "Welcome to M26_";
+    const textToType = "M26 Blog_";
     const typingElement = document.getElementById('typing-text');
     let index = 0;
 
@@ -122,4 +122,5 @@ document.addEventListener('DOMContentLoaded', () => {
         initParticles();
         animateParticles();
     }
+
 });
