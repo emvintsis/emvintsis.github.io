@@ -1,13 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // ==========================================
-    // 1. EFFET MACHINE À ÉCRIRE (TON CODE)
+// ==========================================
+    // 1. EFFET MACHINE À ÉCRIRE (MODIFIÉ)
     // ==========================================
     const textToType = "M26 Blog_";
     const typingElement = document.getElementById('typing-text');
     let index = 0;
 
     function typeWriter() {
+        // AJOUT : Vérification de sécurité
+        if (!typingElement) return; 
+
         if (index < textToType.length) {
             typingElement.innerHTML += textToType.charAt(index);
             index++;
@@ -15,15 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             typingElement.innerHTML += '<span class="cursor">|</span>';
             blinkCursor();
-        }
-    }
-
-    function blinkCursor() {
-        const cursor = document.querySelector('.cursor');
-        if(cursor) {
-            setInterval(() => {
-                cursor.style.opacity = (cursor.style.opacity === '0' ? '1' : '0');
-            }, 500);
         }
     }
 
@@ -124,3 +117,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+

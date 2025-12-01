@@ -178,3 +178,130 @@ footer {
     background: #050505;
     font-size: 0.8rem; 
 }
+
+
+/* =========================================
+   STYLES SPÉCIFIQUES PAGE ARTICLE
+   ========================================= */
+
+/* Header Article - plus compact que le Hero */
+.article-header {
+    padding: 100px 0 40px 0;
+    background: radial-gradient(circle at center, rgba(0, 40, 10, 0.4) 0%, rgba(0,0,0,0) 70%);
+    border-bottom: 1px solid #222;
+}
+
+.article-header h1 {
+    font-size: 2.5rem;
+    color: #e0e0e0;
+    margin: 10px 0 20px 0;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+.meta-date {
+    color: #00ff41;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Corps de l'article */
+.article-content article {
+    max-width: 800px; /* Largeur de lecture confortable */
+    margin: 0 auto;
+    background: rgba(15, 15, 15, 0.85); /* Fond sombre semi-transparent */
+    padding: 40px;
+    border: 1px solid #333;
+    border-radius: 4px;
+}
+
+.article-content p {
+    margin-bottom: 20px;
+    color: #ccc;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.article-content h2 {
+    color: #00ff41;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-bottom: 1px dashed #333;
+    padding-bottom: 10px;
+}
+
+.article-content h3 {
+    color: #fff;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+/* Liste à puces custom */
+.article-content ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+.article-content ul li {
+    margin-bottom: 10px;
+    list-style: none;
+    position: relative;
+}
+.article-content ul li::before {
+    content: ">";
+    color: #00ff41;
+    position: absolute;
+    left: -20px;
+}
+
+/* Citations */
+blockquote {
+    border-left: 3px solid #00ff41;
+    background: rgba(0, 255, 65, 0.05);
+    padding: 15px 20px;
+    margin: 30px 0;
+    font-style: italic;
+    color: #ddd;
+}
+
+/* Blocs de code (style terminal) */
+.code-block {
+    background: #000;
+    border: 1px solid #333;
+    border-radius: 4px;
+    margin: 25px 0;
+    overflow: hidden;
+}
+
+.code-header {
+    background: #111;
+    color: #888;
+    padding: 5px 15px;
+    font-size: 0.75rem;
+    border-bottom: 1px solid #333;
+    font-family: sans-serif;
+}
+
+pre {
+    padding: 15px;
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    color: #a9b7c6; /* Couleur de base code */
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: #333;
+    margin: 40px 0;
+}
+
+.next-step {
+    margin-top: 50px;
+    text-align: center;
+}
